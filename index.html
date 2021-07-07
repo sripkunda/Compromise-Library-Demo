@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compromise Library Demo</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+
+    <h1>Compromise Library Demo</h1>
+
+    <input placeholder="Enter Sentence" id="sentence_input" />
+    <input placeholder="Enter Custom Match Syntax" id="match_custom" />
+
+    <table id="fill_table"></table>
+    <textarea readonly rows="20" id="log_area"></textarea>
+
+    <!-- Logging -->
+    <script>
+        const startLog = () => {
+            console.stdlog = console.log.bind(console); // Keep stdlog as a way to console.log without inserting into the UI log
+            console.log = function() {
+                document.getElementById("log_area").innerHTML += (Array.from(arguments)) + "\n"; // 
+                console.stdlog(...arguments); // pass all of the arguments to standard log as well
+            }
+        }
+        startLog(); // Start the logging
+    </script>
+
+    <!-- Compromise Library -->
+    <script src="https://unpkg.com/compromise"></script>
+    <script src="https://unpkg.com/compromise-numbers"></script>
+    <script src="https://unpkg.com/compromise-dates"></script>
+    <script src="https://unpkg.com/compromise-adjectives"></script>
+
+    <!-- Scripts -->
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
